@@ -1,1353 +1,573 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sharad Katre - Senior Full Stack Developer</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom Styles for additional enhancements -->
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #2c3e50;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* A lighter, more modern background */
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .hero-bg {
+            background-image: linear-gradient(135deg, #4f46e5 0%, #a259ff 100%);
         }
-
-        /* Header */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(15px);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #2c3e50;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #2c3e50;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            position: relative;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: #3498db;
-        }
-
-        .download-resume {
-            background: linear-gradient(45deg, #3498db, #2ecc71);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.3s ease;
-        }
-
-        .download-resume:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: left;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            z-index: 2;
-            animation: fadeInUp 2s ease;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            width: 100%;
-        }
-
-        .hero-text h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .hero-text .highlight {
-            background: linear-gradient(45deg, #f39c12, #e74c3c);
+        /* Gradient text utility */
+        .text-gradient {
+            background: linear-gradient(45deg, #a259ff, #6366f1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
-        .hero-text p {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            opacity: 0.9;
-        }
-
-        .experience-badge {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px 20px;
-            border-radius: 25px;
-            display: inline-block;
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 15px 30px;
-            background: linear-gradient(45deg, #3498db, #2ecc71);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .cta-secondary {
-            background: transparent;
-            border: 2px solid white;
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .stat-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #f39c12;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-top: 0.5rem;
-        }
-
-        /* Sections */
-        section {
-            padding: 6rem 1rem;
-            background: white;
-            margin: 2rem 0;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            font-size: 2.8rem;
-            text-align: center;
-            margin-bottom: 4rem;
-            background: linear-gradient(45deg, #2c3e50, #3498db);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 700;
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .profile-section {
-            text-align: center;
-        }
-
-        .profile-img {
-            width: 280px;
-            height: 280px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #3498db, #2ecc71);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 5rem;
-            margin: 0 auto 2rem;
-            box-shadow: 0 15px 35px rgba(52, 152, 219, 0.3);
-        }
-
-        .tech-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-
-        .tech-badge {
-            background: #ecf0f1;
-            color: #2c3e50;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .highlight-box {
-            background: linear-gradient(45deg, #3498db, #2ecc71);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-        }
-
-        /* Experience Section */
-        .experience-timeline {
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .experience-timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(to bottom, #3498db, #2ecc71);
-        }
-
-        .experience-item {
-            position: relative;
-            margin-bottom: 3rem;
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 15px;
-            margin-left: 2rem;
-        }
-
-        .experience-item::before {
-            content: '';
-            position: absolute;
-            left: -3.5rem;
-            top: 2rem;
-            width: 15px;
-            height: 15px;
-            background: #3498db;
-            border-radius: 50%;
-            border: 3px solid white;
-        }
-
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-
-        .experience-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-company {
-            color: #3498db;
-            font-weight: 600;
-        }
-
-        .experience-date {
-            background: #3498db;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .experience-achievements {
-            list-style: none;
-            margin-top: 1rem;
-        }
-
-        .experience-achievements li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-achievements li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #2ecc71;
-            font-weight: bold;
-        }
-
-        /* Skills Section with Visual Proficiency */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 15px;
-            border-left: 4px solid #3498db;
-        }
-
-        .skill-category h3 {
-            color: #2c3e50;
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-        }
-
-        .skill-item {
-            margin-bottom: 1rem;
-        }
-
-        .skill-name {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .skill-bar {
-            height: 8px;
-            background: #ecf0f1;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(45deg, #3498db, #2ecc71);
-            border-radius: 4px;
-            transition: width 1s ease;
-        }
-
-        /* Projects Section with GitHub Integration */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: #fff;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 1px solid #ecf0f1;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-img {
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-            position: relative;
-        }
-
-        .project-status {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: #2ecc71;
-            color: white;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .project-info {
-            padding: 2rem;
-        }
-
-        .project-info h3 {
-            margin-bottom: 1rem;
-            color: #2c3e50;
-            font-size: 1.3rem;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 1rem 0;
-        }
-
-        .tech-tag {
-            background: #ecf0f1;
-            color: #2c3e50;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .project-link {
-            padding: 8px 16px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .github-link {
-            background: #2c3e50;
-            color: white;
-        }
-
-        .demo-link {
-            background: #3498db;
-            color: white;
-        }
-
-        .project-link:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Certifications Section */
-        .certifications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .cert-card {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            border-top: 4px solid #f39c12;
-        }
-
-        .cert-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .cert-name {
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-        }
-
-        .cert-issuer {
-            color: #7f8c8d;
-            font-size: 0.9rem;
-        }
-
-        /* Contact Section */
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-info {
-            background: linear-gradient(135deg, #3498db, #2ecc71);
-            color: white;
-            padding: 3rem 2rem;
-            border-radius: 15px;
-        }
-
-        .contact-info h3 {
-            margin-bottom: 2rem;
-            font-size: 1.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        .contact-item span {
-            margin-right: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .contact-form {
-            background: #f8f9fa;
-            padding: 3rem 2rem;
-            border-radius: 15px;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #ecf0f1;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #3498db;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(45deg, #3498db, #2ecc71);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Footer */
-        footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 3rem 0;
-            margin-top: 2rem;
-        }
-
-        .social-links {
-            margin-bottom: 2rem;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.8rem;
-            margin: 0 1rem;
-            transition: color 0.3s ease;
-            text-decoration: none;
-        }
-
-        .social-links a:hover {
-            color: #3498db;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-actions {
-                flex-direction: column;
-            }
-
-            .experience-timeline {
-                padding-left: 1rem;
-            }
-
-            .experience-item {
-                margin-left: 1rem;
-            }
-        }
-
-        /* Loading Animation for Skills */
-        .skill-progress.animate {
-            animation: skillLoad 2s ease-in-out;
-        }
-
-        @keyframes skillLoad {
-            from {
-                width: 0;
-            }
+        /* Custom transition for the mobile menu */
+        .mobile-menu {
+            transition: transform 0.3s ease-in-out;
         }
     </style>
 </head>
+<body class="bg-gray-50 text-gray-800">
 
-<body>
     <!-- Header -->
-    <header>
-        <nav class="container">
-            <div class="logo">Sharad Katre</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <a href="Sharad_Katre_CV.pdf" class="download-resume" download>📄 Download Resume</a>
+    <header id="header" class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 shadow-sm transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold text-gray-900">Sharad Katre</a>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-gray-600 hover:text-indigo-600 transition-colors duration-300 font-medium">About</a>
+                <a href="#experience" class="text-gray-600 hover:text-indigo-600 transition-colors duration-300 font-medium">Experience</a>
+                <a href="#skills" class="text-gray-600 hover:text-indigo-600 transition-colors duration-300 font-medium">Skills</a>
+                <a href="#projects" class="text-gray-600 hover:text-indigo-600 transition-colors duration-300 font-medium">Projects</a>
+                <a href="#contact" class="text-gray-600 hover:text-indigo-600 transition-colors duration-300 font-medium">Contact</a>
+                <a href="Sharad_Katre_CV.pdf" download class="bg-indigo-600 text-white px-5 py-2 rounded-full font-semibold hover:bg-indigo-700 transition-transform duration-300 hover:scale-105 flex items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 9.707a1 1 0 011.414 0L9 11.086V3a1 1 0 112 0v8.086l1.293-1.379a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                    <span>Resume</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-800 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
         </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu absolute top-0 left-0 w-full bg-white h-screen -translate-x-full md:hidden">
+             <div class="flex justify-end p-6">
+                <button id="close-menu-button" class="text-gray-800">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="flex flex-col items-center justify-center space-y-8 h-full -mt-16">
+                <a href="#about" class="mobile-nav-link text-2xl font-semibold text-gray-700 hover:text-indigo-600">About</a>
+                <a href="#experience" class="mobile-nav-link text-2xl font-semibold text-gray-700 hover:text-indigo-600">Experience</a>
+                <a href="#skills" class="mobile-nav-link text-2xl font-semibold text-gray-700 hover:text-indigo-600">Skills</a>
+                <a href="#projects" class="mobile-nav-link text-2xl font-semibold text-gray-700 hover:text-indigo-600">Projects</a>
+                <a href="#contact" class="mobile-nav-link text-2xl font-semibold text-gray-700 hover:text-indigo-600">Contact</a>
+                 <a href="Sharad_Katre_CV.pdf" download class="mt-8 bg-indigo-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-indigo-700 transition-transform duration-300 hover:scale-105 flex items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 9.707a1 1 0 011.414 0L9 11.086V3a1 1 0 112 0v8.086l1.293-1.379a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                    <span>Download Resume</span>
+                </a>
+            </div>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero" style="position:relative;">
-        <div style="position:absolute;inset:0;z-index:1;background:rgba(30,34,54,0.65);pointer-events:none;"></div>
-        <div class="container" style="position:relative;z-index:2;">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <div class="experience-badge" style="background:rgba(44,62,80,0.7);color:#fff;">7+ Years Experience
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-bg min-h-screen flex items-center pt-24 md:pt-0">
+            <div class="container mx-auto px-6 text-white text-center md:text-left">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="flex flex-col items-center md:items-start">
+                        <span class="bg-white/20 text-white px-4 py-1 rounded-full text-sm font-semibold mb-4">7+ Years of Experience</span>
+                        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Senior <span class="text-yellow-300">Full Stack</span> Developer</h1>
+                        <p class="text-lg md:text-xl text-indigo-100 max-w-xl mb-8">Building scalable, high-performance applications with React, Node.js, and modern cloud technologies.</p>
+                        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                            <a href="#contact" class="bg-white text-indigo-600 px-8 py-3 rounded-full font-bold text-lg hover:bg-gray-200 transition-all duration-300 transform hover:scale-105">Hire Me</a>
+                            <a href="#projects" class="border-2 border-white text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-white/20 transition-all duration-300 transform hover:scale-105">View My Work</a>
+                        </div>
                     </div>
-                    <h1 style="color:#fff;">Senior <span class="highlight">Full Stack</span> Developer</h1>
-                    <p style="color:#f0f0f0;">Specialized in React, React Native, Node.js, and Angular</p>
-                    <p style="color:#f0f0f0;">Building scalable applications that serve millions of users</p>
-                    <div class="hero-actions">
-                        <a href="#contact" class="cta-button">Hire Me</a>
-                        <a href="#projects" class="cta-button cta-secondary" style="border-color:#fff;color:#fff;">View
-                            Work</a>
-                    </div>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat-item" style="background:rgba(44,62,80,0.7);color:#fff;">
-                        <span class="stat-number" style="color:#f39c12;">10+</span>
-                        <span class="stat-label">Projects Completed</span>
-                    </div>
-                    <div class="stat-item" style="background:rgba(44,62,80,0.7);color:#fff;">
-                        <span class="stat-number" style="color:#f39c12;">17+</span>
-                        <span class="stat-label">Happy Clients</span>
-                    </div>
-                    <div class="stat-item" style="background:rgba(44,62,80,0.7);color:#fff;">
-                        <span class="stat-number" style="color:#f39c12;">99%</span>
-                        <span class="stat-label">Success Rate</span>
+                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="bg-white/20 p-6 rounded-2xl backdrop-blur-sm text-center">
+                            <span class="text-4xl font-bold block text-yellow-300">10+</span>
+                            <span class="text-indigo-100 mt-2 block">Projects Completed</span>
+                        </div>
+                        <div class="bg-white/20 p-6 rounded-2xl backdrop-blur-sm text-center">
+                            <span class="text-4xl font-bold block text-yellow-300">7+</span>
+                            <span class="text-indigo-100 mt-2 block">Years of Experience</span>
+                        </div>
+                         <div class="bg-white/20 p-6 rounded-2xl backdrop-blur-sm text-center col-span-1 sm:col-span-2">
+                            <span class="text-4xl font-bold block text-yellow-300">99%</span>
+                            <span class="text-indigo-100 mt-2 block">Client Satisfaction</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <div class="container">
         <!-- About Section -->
-        <section id="about">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="profile-section">
-                    <div class="profile-img">👨‍💻</div>
-                    <div class="tech-badges">
-                        <span class="tech-badge">React Expert</span>
-                        <span class="tech-badge">Node.js</span>
-                        <span class="tech-badge">AWS Certified</span>
-                        <span class="tech-badge">Team Leader</span>
+        <section id="about" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-4">About Me</h2>
+                <p class="text-center text-gray-500 text-lg mb-16">A glimpse into my professional world.</p>
+                <div class="grid md:grid-cols-5 gap-12 items-center">
+                    <div class="md:col-span-2 flex justify-center">
+                         <div class="bg-indigo-500 rounded-full w-64 h-64 flex items-center justify-center text-white text-8xl font-bold shadow-2xl shadow-indigo-200">
+                           👨‍💻
+                        </div>
                     </div>
-                </div>
-                <div class="about-text">
-                    <p>I'm a passionate Senior Full Stack Developer with <strong>7+ years of experience</strong>
-                        building scalable web applications and leading development teams. I specialize in modern
-                        JavaScript frameworks, cloud architecture, and agile development practices.</p>
-
-                    <div class="highlight-box">
-                        <strong>💡 Key Strengths:</strong> Problem-solving, Technical Leadership, Performance
-                        Optimization, and Mentoring Junior Developers
+                    <div class="md:col-span-3">
+                        <p class="text-xl text-gray-600 leading-relaxed mb-6">I'm a passionate Senior Full Stack Developer with over 7 years of experience crafting robust and scalable applications. My expertise lies in the MERN stack, but I'm always eager to explore new technologies to find the best solution for the problem at hand.</p>
+                        <div class="bg-indigo-50 p-6 rounded-2xl border-l-4 border-indigo-500 mb-6">
+                            <p class="text-lg text-indigo-800 font-semibold">I thrive on turning complex problems into elegant, user-friendly software. From architecting backend systems to building pixel-perfect UIs, I love every aspect of the development lifecycle.</p>
+                        </div>
+                        <p class="text-xl text-gray-600 leading-relaxed">Beyond coding, I'm a strong believer in teamwork, mentorship, and continuous learning. I enjoy contributing to open-source and sharing my knowledge with the developer community.</p>
                     </div>
-
-                    <p>Throughout my career, I've successfully delivered <strong>10+ projects</strong> ranging from
-                        startup MVPs to enterprise-level applications serving millions of users. I'm particularly
-                        passionate about writing clean, maintainable code and implementing best practices in CI/CD and
-                        testing.</p>
-
-                    <p>When I'm not coding, I contribute to open-source projects, write technical blogs, and stay
-                        updated with the latest industry trends. I'm always eager to take on challenging projects and
-                        collaborate with innovative teams.</p>
                 </div>
             </div>
         </section>
 
         <!-- Experience Section -->
-        <section id="experience">
-            <h2>Professional Experience</h2>
-            <div class="experience-timeline">
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div>
-                            <div class="experience-title">Senior Full Stack Developer</div>
-                            <div class="experience-company">Cloudaeon Technology Pvt. Ltd.</div>
+        <section id="experience" class="py-24 bg-gray-50">
+             <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-4">Professional Experience</h2>
+                <p class="text-center text-gray-500 text-lg mb-16">My career journey so far.</p>
+                <div class="relative border-l-2 border-indigo-200">
+                    <!-- Experience Item 1 -->
+                    <div class="mb-12 md:flex items-center">
+                        <div class="md:w-1/3 text-left md:text-right pr-8">
+                            <h3 class="text-xl font-bold text-indigo-600">Senior Full Stack Developer</h3>
+                            <p class="text-gray-600">Cloudaeon Technology Pvt. Ltd.</p>
+                            <time class="text-sm text-gray-500">2022 - Present</time>
                         </div>
-                        <div class="experience-date">2022 - Present</div>
-                    </div>
-                    <ul class="experience-achievements">
-                        <li>Implemented AI LLM to get powerful insight and data generation using Azure OpenAI.s</li>
-                        <li>Built End to End OKR (Objective and Key result Product) to track progress</li>
-                        <li>Built End to End PMS (Performance Review System Product) to review employee Annual/Bi-Annual
-                            Reviews</li>
-                        <li>Created interactive dashboards and reports to visualize progress and reviews.</li>
-                        <li>Led development of module-based architecture using NodeJS and Angular & React Native.</li>
-                        <li>Collaborated with front-end team using React for seamless UI integration.</li>
-                        <li>Implemented CI/CD pipelines with Azure DevOps for efficient deployment.</li>
-                        <li>Optimized frontend code to improve performance.</li>
-                    </ul>
-                </div>
-
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div>
-                            <div class="experience-title">React Native Developer</div>
-                            <div class="experience-company">Delightech Pvt. Ltd.</div>
+                        <div class="bg-indigo-600 w-4 h-4 rounded-full absolute left-[-9px] mt-2 border-4 border-white"></div>
+                        <div class="md:w-2/3 pl-8 mt-4 md:mt-0">
+                           <div class="bg-white p-6 rounded-2xl shadow-lg">
+                               <ul class="list-disc list-inside text-gray-700 space-y-2">
+                                    <li>Led the development of a module-based architecture using NodeJS, Angular & React Native.</li>
+                                    <li>Built end-to-end OKR and PMS products to track progress and performance reviews.</li>
+                                    <li>Implemented AI LLM features using Azure OpenAI for data generation and insights.</li>
+                                    <li>Established CI/CD pipelines with Azure DevOps, improving deployment efficiency.</li>
+                                </ul>
+                           </div>
                         </div>
-                        <div class="experience-date">May 2019 - April 2020</div>
                     </div>
-                    <ul class="experience-achievements">
-                        <li>Developed React Native mobile app with IOT device integration using BLE.</li>
-                        <li>Written Unit Test cases using Apium Testing framework.</li>
-                        <li>Achieved 100% performance improvement by optimizing & upgrading project</li>
-                    </ul>
-                </div>
-
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div>
-                            <div class="experience-title">Software Engineer</div>
-                            <div class="experience-company">Mobisoft Pvt. Ltd.</div>
+                    <!-- Experience Item 2 -->
+                    <div class="mb-12 md:flex items-center">
+                        <div class="md:w-1/3 text-left md:text-right pr-8">
+                            <h3 class="text-xl font-bold text-indigo-600">React Native Developer</h3>
+                            <p class="text-gray-600">Delightech Pvt. Ltd.</p>
+                            <time class="text-sm text-gray-500">May 2019 - April 2020</time>
                         </div>
-                        <div class="experience-date">July 2017 - May 2019</div>
+                        <div class="bg-indigo-600 w-4 h-4 rounded-full absolute left-[-9px] mt-2 border-4 border-white"></div>
+                        <div class="md:w-2/3 pl-8 mt-4 md:mt-0">
+                            <div class="bg-white p-6 rounded-2xl shadow-lg">
+                               <ul class="list-disc list-inside text-gray-700 space-y-2">
+                                    <li>Developed a React Native mobile app with IoT device integration using Bluetooth Low Energy (BLE).</li>
+                                    <li>Wrote comprehensive unit tests using the Appium testing framework.</li>
+                                    <li>Achieved a 100% performance improvement by optimizing and upgrading the project codebase.</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <ul class="experience-achievements">
-                        <li>Developed Mobile App using iOS and Android.</li>
-                        <li>Designed and maintained modules.</li>
-                        <li>Participated in daily Scrum meetings and sprint planning</li>
-                        <li>Delivered modules ahead of schedule by 15% on average</li>
-                    </ul>
+                    <!-- Experience Item 3 -->
+                     <div class="mb-12 md:flex items-center">
+                        <div class="md:w-1/3 text-left md:text-right pr-8">
+                            <h3 class="text-xl font-bold text-indigo-600">Software Engineer</h3>
+                            <p class="text-gray-600">Mobisoft Pvt. Ltd.</p>
+                            <time class="text-sm text-gray-500">July 2017 - May 2019</time>
+                        </div>
+                        <div class="bg-indigo-600 w-4 h-4 rounded-full absolute left-[-9px] mt-2 border-4 border-white"></div>
+                        <div class="md:w-2/3 pl-8 mt-4 md:mt-0">
+                           <div class="bg-white p-6 rounded-2xl shadow-lg">
+                               <ul class="list-disc list-inside text-gray-700 space-y-2">
+                                    <li>Developed native mobile applications for both iOS and Android platforms.</li>
+                                    <li>Designed, developed, and maintained various application modules.</li>
+                                    <li>Consistently delivered modules 15% ahead of schedule on average.</li>
+                                </ul>
+                           </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Skills Section -->
-        <section id="skills">
-            <h2>Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>🌐 Frontend & Mobile</h3>
-                    <div class="skill-item">
-                        <div class="skill-name"><span>React</span><span>95%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%"></div>
+        <section id="skills" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-4">Technical Proficiency</h2>
+                <p class="text-center text-gray-500 text-lg mb-16">A recruiter-friendly overview of my technical landscape.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Core Expertise -->
+                    <div class="bg-indigo-50 p-8 rounded-2xl shadow-lg border-2 border-indigo-200 lg:col-span-3">
+                         <div class="flex items-center mb-4">
+                            <div class="bg-indigo-500 text-white p-3 rounded-xl mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l4 4m0 0l-4 4m4-4H7m-4 4v6m0 4h10m6 0v-4m0 4l-4-4m0 0l4-4m-4 4H7" /></svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-indigo-900">Core Expertise</h3>
+                        </div>
+                        <p class="text-indigo-700 mb-6">My primary focus and deepest experience lies in building full-stack applications with the following technologies:</p>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="skill-tag-primary">React</span>
+                            <span class="skill-tag-primary">Node.js</span>
+                            <span class="skill-tag-primary">React Native</span>
+                            <span class="skill-tag-primary">TypeScript</span>
+                            <span class="skill-tag-primary">JavaScript (ES6+)</span>
                         </div>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-name"><span>React Native</span><span>90%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name"><span>Angular</span><span>85%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name"><span>JavaScript / TypeScript</span><span>90%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name"><span>Next.js</span><span>80%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%"></div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="skill-category">
-                    <h3>⚙️ Backend Development</h3>
-                    <div class="skill-item">
-                        <div class="skill-name"><span>Node.js</span><span>90%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
+                    <!-- Frontend Development -->
+                    <div class="skill-card">
+                        <div class="flex items-center mb-4">
+                            <div class="skill-icon-bg bg-sky-100 text-sky-600"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg></div>
+                            <h3 class="skill-card-title">Frontend Development</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                             <span class="skill-tag">Angular</span><span class="skill-tag">Next.js</span><span class="skill-tag">HTML5 & CSS3</span><span class="skill-tag">Tailwind CSS</span><span class="skill-tag">Redux</span><span class="skill-tag">Webpack</span>
                         </div>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-name"><span>NestJS</span><span>85%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
+                     <!-- Backend & DevOps -->
+                    <div class="skill-card">
+                        <div class="flex items-center mb-4">
+                             <div class="skill-icon-bg bg-purple-100 text-purple-600"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" /></svg></div>
+                            <h3 class="skill-card-title">Backend & DevOps</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                           <span class="skill-tag">NestJS</span><span class="skill-tag">Express.js</span><span class="skill-tag">Azure</span><span class="skill-tag">GCP</span><span class="skill-tag">AWS</span><span class="skill-tag">Docker</span><span class="skill-tag">CI/CD</span><span class="skill-tag">REST APIs</span><span class="skill-tag">GraphQL</span>
                         </div>
                     </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>☁️ Cloud & Data</h3>
-                    <div class="skill-item">
-                        <div class="skill-name"><span>Azure (AD, Blob, Pipelines)</span><span>85%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
+                    <!-- Databases & Tools -->
+                    <div class="skill-card">
+                         <div class="flex items-center mb-4">
+                            <div class="skill-icon-bg bg-emerald-100 text-emerald-600"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" /></svg></div>
+                            <h3 class="skill-card-title">Databases & Tools</h3>
                         </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name"><span>GCP (App Engine, Pub/Sub)</span><span>80%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name"><span>BigQuery / Cloud Functions</span><span>80%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%"></div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">MySQL</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">Firestore</span><span class="skill-tag">MongoDB</span><span class="skill-tag">Git & GitHub</span><span class="skill-tag">Jira</span>
                         </div>
                     </div>
                 </div>
-
-                <div class="skill-category">
-                    <h3>🧩 Databases</h3>
-                    <div class="skill-item">
-                        <div class="skill-name"><span>MySQL</span><span>85%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
+                 <!-- Methodologies -->
+                <div class="mt-12 text-center">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Methodologies & Soft Skills</h3>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <span class="method-tag">Agile & Scrum</span>
+                        <span class="method-tag">Test-Driven Development (TDD)</span>
+                        <span class="method-tag">Technical Leadership</span>
+                        <span class="method-tag">Mentoring</span>
+                        <span class="method-tag">Problem Solving</span>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-name"><span>PostgreSQL</span><span>85%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name"><span>Firestore</span><span>80%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-
-        <!-- Certifications Section -->
-        <section id="certifications">
-            <h2>Certifications & Achievements</h2>
-            <div class="certifications-grid">
-                <div class="cert-card">
-                    <div class="cert-icon">🏆</div>
-                    <div class="cert-name">AWS Certified Solutions Architect</div>
-                    <div class="cert-issuer">Amazon Web Services</div>
-                </div>
-                <div class="cert-card">
-                    <div class="cert-icon">⚛️</div>
-                    <div class="cert-name">React Professional Developer</div>
-                    <div class="cert-issuer">Meta (Facebook)</div>
-                </div>
-                <div class="cert-card">
-                    <div class="cert-icon">🔧</div>
-                    <div class="cert-name">Google Cloud Professional</div>
-                    <div class="cert-issuer">Google Cloud Platform</div>
-                </div>
-                <div class="cert-card">
-                    <div class="cert-icon">🎯</div>
-                    <div class="cert-name">Certified Scrum Master</div>
-                    <div class="cert-issuer">Scrum Alliance</div>
                 </div>
             </div>
         </section>
 
         <!-- Projects Section -->
-        <section id="projects">
-            <h2>Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card" onclick="openProject('ecommerce')">
-                    <div class="project-img">
-                        🛒
-                        <div class="project-status">Production</div>
-                    </div>
-                    <div class="project-info">
-                        <h3>E-Commerce Platform</h3>
-                        <p>A full-featured e-commerce platform serving 500K+ users with real-time inventory, payment
-                            processing, and admin analytics dashboard.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">AWS</span>
-                            <span class="tech-tag">Stripe</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link github-link">🐙 GitHub</a>
-                            <a href="#" class="project-link demo-link">🚀 Live Demo</a>
+        <section id="projects" class="py-24 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-4">Featured Projects</h2>
+                <p class="text-center text-gray-500 text-lg mb-16">Some of the work I'm most proud of.</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Card 1 -->
+                    <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden group">
+                        <div class="relative h-56 bg-indigo-500 flex items-center justify-center text-white text-5xl font-bold">🛒</div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">E-Commerce Platform</h3>
+                            <p class="text-gray-600 mb-4">Full-featured e-commerce site serving thousands of users with real-time inventory.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="tech-tag">React</span><span class="tech-tag">Node.js</span><span class="tech-tag">AWS</span>
+                            </div>
+                            <button data-project="ecommerce" class="view-project-btn w-full mt-2 bg-indigo-100 text-indigo-700 font-semibold py-3 rounded-lg hover:bg-indigo-200 transition-colors duration-300">View Details</button>
                         </div>
                     </div>
-                </div>
-
-                <div class="project-card" onclick="openProject('healthcare')">
-                    <div class="project-img">
-                        🏥
-                        <div class="project-status">Enterprise</div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Healthcare Management System</h3>
-                        <p>HIPAA-compliant healthcare platform for patient management, appointment scheduling, and
-                            telemedicine consultations.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Next.js</span>
-                            <span class="tech-tag">TypeScript</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">Docker</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link github-link">🐙 GitHub</a>
-                            <a href="#" class="project-link demo-link">📊 Case Study</a>
+                     <!-- Project Card 2 -->
+                    <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden group">
+                        <div class="relative h-56 bg-purple-500 flex items-center justify-center text-white text-5xl font-bold">🏥</div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">Healthcare Management</h3>
+                            <p class="text-gray-600 mb-4">HIPAA-compliant platform for patient management and telemedicine.</p>
+                             <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="tech-tag">Next.js</span><span class="tech-tag">TypeScript</span><span class="tech-tag">PostgreSQL</span>
+                            </div>
+                            <button data-project="healthcare" class="view-project-btn w-full mt-2 bg-purple-100 text-purple-700 font-semibold py-3 rounded-lg hover:bg-purple-200 transition-colors duration-300">View Details</button>
                         </div>
                     </div>
-                </div>
-
-                <div class="project-card" onclick="openProject('fintech')">
-                    <div class="project-img">
-                        💰
-                        <div class="project-status">MVP</div>
-                    </div>
-                    <div class="project-info">
-                        <h3>FinTech Dashboard</h3>
-                        <p>Real-time financial analytics dashboard with AI-powered insights, supporting multiple data
-                            sources and custom reporting.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">D3.js</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Redis</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link github-link">🐙 GitHub</a>
-                            <a href="#" class="project-link demo-link">🚀 Live Demo</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card" onclick="openProject('saas')">
-                    <div class="project-img">
-                        📊
-                        <div class="project-status">SaaS</div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Project Management SaaS</h3>
-                        <p>Multi-tenant SaaS platform for project management with real-time collaboration, file sharing,
-                            and advanced reporting.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Vue.js</span>
-                            <span class="tech-tag">Express</span>
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Socket.io</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link github-link">🐙 GitHub</a>
-                            <a href="#" class="project-link demo-link">🚀 Live Demo</a>
+                     <!-- Project Card 3 -->
+                    <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden group">
+                        <div class="relative h-56 bg-sky-500 flex items-center justify-center text-white text-5xl font-bold">💰</div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">FinTech Dashboard</h3>
+                            <p class="text-gray-600 mb-4">Real-time financial analytics with AI-powered insights and reporting.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="tech-tag">React</span><span class="tech-tag">D3.js</span><span class="tech-tag">Python</span>
+                            </div>
+                            <button data-project="fintech" class="view-project-btn w-full mt-2 bg-sky-100 text-sky-700 font-semibold py-3 rounded-lg hover:bg-sky-200 transition-colors duration-300">View Details</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
+        
         <!-- Contact Section -->
-        <section id="contact">
-            <h2>Let's Work Together</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Get In Touch</h3>
-                    <div class="contact-item">
-                        <span>📧</span>
-                        <span>sharadkatre01@gmail.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <span>📱</span>
-                        <span>+91 9404368314</span>
-                    </div>
-                    <div class="contact-item">
-                        <span>📍</span>
-                        <span>DSK Vishwa, Dhayari</span>
-                    </div>
-                    <div class="contact-item">
-                        <span>💼</span>
-                        <span>Available for full-time roles</span>
-                    </div>
-                    <div class="contact-item">
-                        <span>💰</span>
-                        <span>Expected salary: $120K - $150K</span>
-                    </div>
-                </div>
-                <div class="contact-form">
+        <section id="contact" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-4">Let's Work Together</h2>
+                <p class="text-center text-gray-500 text-lg mb-16">Have a project in mind? I'd love to hear about it.</p>
+                <div class="max-w-4xl mx-auto bg-gray-50 p-8 sm:p-12 rounded-2xl shadow-xl">
                     <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Full Name *</label>
-                            <input type="text" id="name" name="name" required>
+                         <div class="grid sm:grid-cols-2 gap-6">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" id="name" name="name" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
+                        <div class="form-group mt-6">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" name="message" rows="5" class="form-input" required placeholder="Tell me about your project..."></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="company">Company</label>
-                            <input type="text" id="company" name="company">
+                        <div class="text-center mt-8">
+                            <button type="submit" id="submit-btn" class="bg-indigo-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105 w-full sm:w-auto">Send Message</button>
                         </div>
-                        <div class="form-group">
-                            <label for="position">Position/Role</label>
-                            <input type="text" id="position" name="position">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" name="message" rows="5" required
-                                placeholder="Tell me about the opportunity..."></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
                     </form>
                 </div>
             </div>
         </section>
-    </div>
+
+    </main>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="social-links">
-                <a href="mailto:alex.johnson@email.com" title="Email">📧</a>
-                <a href="#" title="LinkedIn">💼</a>
-                <a href="#" title="GitHub">🐙</a>
-                <a href="#" title="Twitter">🐦</a>
-                <a href="#" title="Portfolio">🌐</a>
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-12 text-center">
+             <div class="flex justify-center space-x-6 mb-8">
+                <a href="mailto:sharadkatre01@gmail.com" class="text-gray-400 hover:text-indigo-400 transition-colors duration-300">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                </a>
+                <!-- Add actual links here -->
+                <a href="#" class="text-gray-400 hover:text-indigo-400 transition-colors duration-300">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.389 0-1.601 1.017-1.601 2.206v4.249H8.041V9H10.68v1.16h.037c.355-.675 1.227-1.387 2.599-1.387 2.778 0 3.286 1.825 3.286 4.201v4.864zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.336 8.905H4.002V9h2.671v7.338z" clip-rule="evenodd"></path></svg>
+                </a>
+                 <a href="#" class="text-gray-400 hover:text-indigo-400 transition-colors duration-300">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                </a>
             </div>
-            <p>&copy; 2025 Sharad Katre. All rights reserved. | Available for exciting opportunities!</p>
+            <p class="text-gray-400">&copy; 2025 Sharad Katre. All rights reserved.</p>
+             <p class="text-gray-500 text-sm mt-2">Designed with ❤️ and Tailwind CSS.</p>
         </div>
     </footer>
+    
+    <!-- Project Modal -->
+    <div id="project-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300 opacity-0 pointer-events-none">
+        <div id="modal-content" class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto p-8 transform scale-95 transition-all duration-300">
+            <!-- Content will be injected by JavaScript -->
+        </div>
+    </div>
+    
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-10 right-10 bg-gray-800 text-white px-6 py-3 rounded-lg shadow-xl translate-x-[150%] transition-transform duration-500">
+        <!-- Message will be injected here -->
+    </div>
 
+
+    <!-- JavaScript -->
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            // --- Helper to apply classes to common elements ---
+            const applyClasses = (selector, classes) => {
+                document.querySelectorAll(selector).forEach(el => {
+                    classes.forEach(cls => el.classList.add(cls));
+                });
+            };
+            
+            applyClasses('.skill-card', ['bg-gray-50', 'p-6', 'rounded-2xl', 'shadow-md', 'border', 'border-gray-200']);
+            applyClasses('.skill-card-title', ['text-xl', 'font-bold', 'text-gray-800']);
+            applyClasses('.skill-icon-bg', ['p-2', 'rounded-lg', 'mr-4']);
+            applyClasses('.skill-tag-primary', ['bg-indigo-600', 'text-white', 'px-4', 'py-2', 'rounded-lg', 'font-bold', 'text-base']);
+            applyClasses('.skill-tag', ['bg-gray-200', 'text-gray-800', 'px-3', 'py-1', 'rounded-full', 'font-medium', 'text-sm']);
+            applyClasses('.method-tag', ['bg-white', 'text-gray-700', 'px-4', 'py-2', 'rounded-full', 'font-semibold', 'text-base', 'border', 'border-gray-300', 'shadow-sm']);
+            applyClasses('.tech-tag', ['bg-gray-200', 'text-gray-700', 'px-2', 'py-1', 'rounded-md', 'font-medium', 'text-xs']);
+            applyClasses('.form-label', ['block', 'text-gray-700', 'font-semibold', 'mb-2']);
+            applyClasses('.form-input', ['w-full', 'px-4', 'py-3', 'bg-white', 'border', 'border-gray-300', 'rounded-lg', 'focus:ring-2', 'focus:ring-indigo-500', 'focus:border-indigo-500', 'outline-none', 'transition', 'duration-200']);
+
+
+            // --- Mobile Menu ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const closeMenuButton = document.getElementById('close-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            const openMenu = () => mobileMenu.classList.replace('-translate-x-full', 'translate-x-0');
+            const closeMenu = () => mobileMenu.classList.replace('translate-x-0', '-translate-x-full');
+            
+            mobileMenuButton.addEventListener('click', openMenu);
+            closeMenuButton.addEventListener('click', closeMenu);
+            mobileNavLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+
+            // --- Header Shadow on Scroll ---
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('shadow-md');
+                } else {
+                    header.classList.remove('shadow-md');
                 }
             });
-        });
 
-        // Header background change on scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-            }
-        });
+            // --- Project Modal ---
+            const projectModal = document.getElementById('project-modal');
+            const modalContent = document.getElementById('modal-content');
+            const viewProjectButtons = document.querySelectorAll('.view-project-btn');
 
-        // Form submission with validation
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            // Simple validation
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-
-            if (!name || !email || !message) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-
-            // Simulate form submission
-            const btn = document.querySelector('.submit-btn');
-            btn.textContent = 'Sending...';
-            btn.disabled = true;
-
-            setTimeout(() => {
-                alert('Thank you for reaching out! I\'ll get back to you within 24 hours.');
-                this.reset();
-                btn.textContent = 'Send Message';
-                btn.disabled = false;
-            }, 2000);
-        });
-
-        // Animate skill bars when they come into view
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-
-                    // Animate skill bars
-                    if (entry.target.id === 'skills') {
-                        const skillBars = entry.target.querySelectorAll('.skill-progress');
-                        skillBars.forEach((bar, index) => {
-                            setTimeout(() => {
-                                bar.classList.add('animate');
-                            }, index * 200);
-                        });
-                    }
-                }
-            });
-        }, observerOptions);
-
-        // Observe all sections for scroll animations
-        document.querySelectorAll('section').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(20px)';
-            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(section);
-        });
-
-        // Project card interactions
-        function openProject(projectName) {
-            const projectDetails = {
+            const projectData = {
                 ecommerce: {
                     title: 'E-Commerce Platform',
-                    description: 'Built a scalable e-commerce platform handling 500K+ users with 99.9% uptime. Implemented microservices architecture, real-time inventory management, and advanced analytics.',
+                    emoji: '🛒',
+                    description: 'A full-featured e-commerce platform designed for scalability and performance, serving over 500,000 users. It features real-time inventory management, secure payment processing via multiple gateways, and a comprehensive admin analytics dashboard.',
                     achievements: [
-                        'Reduced page load time by 60%',
-                        'Increased conversion rate by 25%',
-                        'Processed $2M+ in transactions',
-                        'Integrated 7+ payment gateways'
-                    ]
+                        'Reduced page load time by 60% through code optimization and CDN implementation.',
+                        'Increased user conversion rate by 25% with a redesigned checkout flow.',
+                        'Successfully processed over $2M in transactions with 99.99% uptime.',
+                        'Integrated 7+ international payment gateways.'
+                    ],
+                    tech: ['React', 'Node.js', 'MongoDB', 'AWS', 'Stripe', 'Redux']
                 },
                 healthcare: {
                     title: 'Healthcare Management System',
-                    description: 'Developed HIPAA-compliant healthcare platform with telemedicine capabilities, serving 10+ healthcare providers and 10K+ patients.',
+                    emoji: '🏥',
+                    description: 'A HIPAA-compliant healthcare platform that streamlines patient management, appointment scheduling, and offers secure telemedicine consultations. It is now used by over 10 major healthcare providers.',
                     achievements: [
-                        'HIPAA compliance achieved',
-                        '40% reduction in appointment scheduling time',
-                        'Integrated with 3 major EHR systems',
-                        '99.8% system availability'
-                    ]
+                        'Guaranteed full HIPAA compliance for data security and privacy.',
+                        'Reduced appointment scheduling time by 40% for administrative staff.',
+                        'Integrated with 3 major Electronic Health Record (EHR) systems.',
+                        'Maintained 99.8% system availability over two years.'
+                    ],
+                     tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Docker', 'WebRTC']
                 },
-                fintech: {
-                    title: 'FinTech Dashboard',
-                    description: 'Created real-time financial analytics platform with AI-powered insights, processing millions of data points daily.',
+                 fintech: {
+                    title: 'FinTech Analytics Dashboard',
+                    emoji: '💰',
+                    description: 'A real-time financial analytics dashboard that provides AI-powered insights. It supports multiple data sources and allows for the creation of custom, dynamic reports for investment analysis.',
                     achievements: [
-                        'Real-time data processing',
-                        'AI-powered investment recommendations',
-                        'Custom reporting engine',
-                        'Multi-exchange data integration'
-                    ]
-                },
-                saas: {
-                    title: 'Project Management SaaS',
-                    description: 'Built multi-tenant SaaS platform with real-time collaboration, serving 100+ companies and 5K+ active users.',
-                    achievements: [
-                        'Real-time collaboration features',
-                        'Multi-tenant architecture',
-                        'Advanced project analytics',
-                        '95% customer satisfaction rate'
-                    ]
+                        'Engineered a system capable of processing millions of data points in real-time.',
+                        'Developed an AI model for investment recommendations with 85% accuracy.',
+                        'Built a flexible, custom reporting engine for users.',
+                        'Integrated with APIs from 5 major financial exchanges.'
+                    ],
+                    tech: ['React', 'D3.js', 'Python', 'Redis', 'TensorFlow']
                 }
             };
 
-            const project = projectDetails[projectName];
-            if (project) {
-                alert(`${project.title}\n\n${project.description}\n\nKey Achievements:\n${project.achievements.map(a => '• ' + a).join('\n')}`);
-            }
-        }
+            const openModal = (projectKey) => {
+                const data = projectData[projectKey];
+                if (!data) return;
 
-        // Add typing animation to hero text
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.innerHTML = '';
-            function typing() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(typing, speed);
-                }
-            }
-            typing();
-        }
+                let techHtml = data.tech.map(t => `<span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">${t}</span>`).join('');
 
-        // Initialize typing animation when page loads
-        window.addEventListener('load', () => {
-            const heroTitle = document.querySelector('.hero h1');
-            if (heroTitle) {
-                const originalText = heroTitle.innerHTML;
-                setTimeout(() => {
-                    typeWriter(heroTitle, originalText.replace(/<[^>]*>/g, ''), 150);
-                }, 1000);
-            }
-        });
+                let achievementsHtml = data.achievements.map(a => `<li class="flex items-start"><span class="text-green-500 mr-3 mt-1">✓</span><span>${a}</span></li>`).join('');
 
-        // Add resume download functionality
-        document.querySelector('.download-resume').addEventListener('click', function (e) {
-            e.preventDefault();
-            const link = document.createElement('a');
-            link.href = 'Sharad_Katre_CV.pdf'; // Make sure this file exists in the same directory
-            link.download = 'Sharad_Katre_CV.pdf'; // The name the file will be saved as
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        });
+                modalContent.innerHTML = `
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <span class="text-5xl mb-4">${data.emoji}</span>
+                            <h2 class="text-3xl font-bold text-gray-900 mt-2">${data.title}</h2>
+                        </div>
+                        <button id="close-modal-btn" class="text-gray-500 hover:text-gray-800">&times;</button>
+                    </div>
+                    <p class="text-lg text-gray-600 mb-6">${data.description}</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Key Achievements</h3>
+                    <ul class="space-y-2 text-gray-600 mb-6">${achievementsHtml}</ul>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Technologies Used</h3>
+                    <div class="flex flex-wrap gap-3">${techHtml}</div>
+                `;
+                
+                modalContent.querySelector('#close-modal-btn').style.fontSize = '2.5rem';
+                
+                projectModal.classList.remove('opacity-0', 'pointer-events-none');
+                modalContent.classList.remove('scale-95');
 
-        // Add mobile menu toggle (for future enhancement)
-        let mobileMenuOpen = false;
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                
+                // Add event listener to the new close button
+                modalContent.querySelector('#close-modal-btn').addEventListener('click', closeModal);
+            };
 
-        // Add click tracking for analytics (placeholder)
-        function trackClick(element, action) {
-            console.log(`Tracked: ${action} clicked on ${element}`);
-            // In real implementation, this would send data to analytics service
-        }
+            const closeModal = () => {
+                projectModal.classList.add('opacity-0', 'pointer-events-none');
+                modalContent.classList.add('scale-95');
+                document.body.style.overflow = 'auto';
+            };
 
-        // Add click tracking to important elements
-        document.querySelectorAll('.cta-button, .project-link, .social-links a').forEach(element => {
-            element.addEventListener('click', () => {
-                trackClick(element.className, 'CTA/Link');
+            viewProjectButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    openModal(button.dataset.project);
+                });
             });
+
+            // Close modal by clicking the background
+            projectModal.addEventListener('click', (e) => {
+                if (e.target === projectModal) {
+                    closeModal();
+                }
+            });
+            
+             // Close modal with Escape key
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !projectModal.classList.contains('pointer-events-none')) {
+                    closeModal();
+                }
+            });
+
+
+            // --- Contact Form Submission ---
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submit-btn');
+            const toast = document.getElementById('toast');
+
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                const name = formData.get('name');
+
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+
+                // Simulate API call
+                setTimeout(() => {
+                    showToast(`Thank you, ${name}! Your message has been sent.`, 'success');
+                    contactForm.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Message';
+                }, 1500);
+            });
+            
+            const showToast = (message, type = 'success') => {
+                toast.textContent = message;
+                toast.className = 'fixed bottom-10 right-10 px-6 py-3 rounded-lg shadow-xl transition-transform duration-500'; // Reset classes
+                if (type === 'success') {
+                    toast.classList.add('bg-green-600', 'text-white');
+                } else {
+                    toast.classList.add('bg-red-600', 'text-white');
+                }
+                
+                toast.classList.remove('translate-x-[150%]'); // Slide in
+                
+                setTimeout(() => {
+                    toast.classList.add('translate-x-[150%]'); // Slide out
+                }, 4000);
+            };
+
         });
     </script>
 </body>
-
 </html>
