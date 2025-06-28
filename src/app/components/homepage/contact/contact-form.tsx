@@ -119,12 +119,12 @@ const ContactForm: React.FC = () => {
     try {
       setIsLoading(true);
       await axios.post(
-        `${process.env.NEXT_PUBLIC_APP_URL}/api/contact`,
+        `${process.env.NEXT_PUBLIC_APP_URL}api/contact`,
         userInput
       );
 
-      setShowSuccess(true);
       toast.success("Message sent successfully!");
+      setShowSuccess(true);
       
       // Reset form after success
       setTimeout(() => {
@@ -143,6 +143,7 @@ const ContactForm: React.FC = () => {
       }, 2000);
 
     } catch (error) {
+      console.log("🚀 ~ error:", error);
       const axiosError = error as AxiosError<{ message?: string }>;
       toast.error(axiosError?.response?.data?.message || "Failed to send message. Please try again.");
     } finally {
