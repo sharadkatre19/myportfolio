@@ -226,19 +226,6 @@ const ContactForm: React.FC = () => {
           </div>
         </div>
         
-        {/* Progress Bar */}
-        <div className="mb-4">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-600">Form Progress</span>
-            <span className="text-sm text-[#0974f1] font-semibold">{Math.round(formProgress)}%</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div 
-              className="bg-gradient-to-r from-[#9fccfa] to-[#0974f1] h-2 rounded-full transition-all duration-500 ease-out"
-              style={{ width: `${formProgress}%` }}
-            ></div>
-          </div>
-        </div>
       </div>
 
       {/* Main Form Card */}

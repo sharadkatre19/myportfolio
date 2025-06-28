@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
           <div className="flex items-center gap-5">
             <Link
               target="_blank"
-              href="https://github.com/said7388/developer-portfolio"
+              href="https://github.com/sharadkatre19/myportfolio"
               className="flex items-center gap-2 uppercase hover:text-[#16f2b3]"
             >
               <IoStar />
@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
             </Link>
             <Link
               target="_blank"
-              href="https://github.com/said7388/developer-portfolio/fork"
+              href="https://github.com/sharadkatre19/myportfolio/fork"
               className="flex items-center gap-2 uppercase hover:text-[#16f2b3]"
             >
               <CgGitFork />

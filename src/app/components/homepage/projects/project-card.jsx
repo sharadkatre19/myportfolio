@@ -95,7 +95,7 @@ function ProjectCard({ project }) {
               {project.tools.map((tool, index) => (
                 <span
                   key={index}
-                  className="px-3 py-1.5 bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-300 text-sm font-medium rounded-lg border border-blue-400/30 hover:border-blue-300/50 hover:shadow-sm hover:shadow-blue-400/20 transition-all duration-200 cursor-default backdrop-blur-sm"
+                  className="px-3 py-1.5 text-blue-300 text-sm font-medium rounded-lg border border-blue-400/30 hover:border-blue-300/50 hover:shadow-sm hover:shadow-blue-400/20 transition-all duration-200 cursor-default backdrop-blur-sm"
                 >
                   {tool}
                 </span>

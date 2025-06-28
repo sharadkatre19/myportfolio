@@ -22,7 +22,7 @@ async function page() {
       <div className="flex justify-center my-5 lg:py-8">
         <div className="flex  items-center">
           <span className="w-24 h-[2px] bg-[#0974f1]"></span>
-          <span className="bg-[#0974f1] w-fit text-white p-2 px-5 text-2xl rounded-md">
+          <span className="bg-gradient-to-r from-[#9fccfa] to-[#0974f1] w-fit text-white p-2 px-5 text-2xl rounded-md">
             All Blog
           </span>
           <span className="w-24 h-[2px] bg-[#0974f1]"></span>

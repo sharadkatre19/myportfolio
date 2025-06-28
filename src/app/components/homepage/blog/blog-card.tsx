@@ -1,18 +1,30 @@
-// @flow strict
 import { timeConverter } from '@/utils/time-converter';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BsHeartFill } from 'react-icons/bs';
 import { FaCommentAlt } from 'react-icons/fa';
 
-function BlogCard({ blog }) {
+export interface Blog {
+  cover_image: string;
+  published_at: string;
+  public_reactions_count: number;
+  comments_count: number;
+  url: string;
+  title: string;
+  reading_time_minutes: number;
+  description: string;
+}
 
+interface BlogCardProps {
+  blog: Blog;
+}
+
+const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
   return (
-    <div className="border border-[#1d293a] hover:border-[#464c6a] transition-all duration-500 bg-[#1b203e] rounded-lg relative group"
-    >
+    <div className="border border-[#1d293a] hover:border-[#464c6a] transition-all duration-500 bg-[#1b203e] rounded-lg relative group">
       <div className="h-44 lg:h-52 w-auto cursor-pointer overflow-hidden rounded-t-lg">
         <Image
-          src={blog?.cover_image}
+          src={blog?.cover_image || ''}
           height={1080}
           width={1920}
           alt=""
