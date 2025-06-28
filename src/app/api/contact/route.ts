@@ -2,23 +2,41 @@ import axios, { AxiosResponse } from 'axios';
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer, { Transporter } from 'nodemailer';
 
-// Interface for contact form payload
+// Type definitions
 interface ContactPayload {
   name: string;
   email: string;
   message: string;
 }
 
-// Interface for Telegram API response
-interface TelegramResponse {
+interface TelegramApiResponse {
   ok: boolean;
-  result?: any;
+  result?: {
+    message_id: number;
+    date: number;
+    chat: {
+      id: number;
+      type: string;
+    };
+    text: string;
+  };
+  error_code?: number;
+  description?: string;
 }
 
-// Interface for mail options
+interface TelegramMessageRequest {
+  text: string;
+  chat_id: string;
+}
+
+interface ApiResponse {
+  success: boolean;
+  message: string;
+}
+
 interface MailOptions {
   from: string;
-  to: string | undefined;
+  to: string;
   subject: string;
   text: string;
   html: string;
@@ -38,16 +56,27 @@ const transporter: Transporter = nodemailer.createTransport({
 });
 
 // Helper function to send a message via Telegram
-async function sendTelegramMessage(token: string, chat_id: string, message: string): Promise<boolean> {
+async function sendTelegramMessage(
+  token: string, 
+  chat_id: string, 
+  message: string
+): Promise<boolean> {
   const url: string = `https://api.telegram.org/bot${token}/sendMessage`;
+  
   try {
-    const res: AxiosResponse<TelegramResponse> = await axios.post(url, {
+    const requestData: TelegramMessageRequest = {
       text: message,
       chat_id,
-    });
-    return res.data.ok;
-  } catch (error: any) {
-    console.error('Error sending Telegram message:', error.response?.data || error.message);
+    };
+    
+    const response: AxiosResponse<TelegramApiResponse> = await axios.post(url, requestData);
+    return response.data.ok;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.error('Error sending Telegram message:', error.response?.data || error.message);
+    } else {
+      console.error('Unexpected error:', error);
+    }
     return false;
   }
 }
@@ -73,7 +102,6 @@ const generateEmailTemplate = (name: string, email: string, userMessage: string)
 
   </div>
 </div>
-
 `;
 
 // Helper function to send an email via Nodemailer
@@ -82,7 +110,7 @@ async function sendEmail(payload: ContactPayload, message: string): Promise<bool
   
   const mailOptions: MailOptions = {
     from: "Portfolio", 
-    to: process.env.EMAIL_ADDRESS, 
+    to: process.env.EMAIL_ADDRESS || '', 
     subject: `New Message From ${name}`, 
     text: message, 
     html: generateEmailTemplate(name, email, userMessage), 
@@ -92,13 +120,17 @@ async function sendEmail(payload: ContactPayload, message: string): Promise<bool
   try {
     await transporter.sendMail(mailOptions);
     return true;
-  } catch (error: any) {
-    console.error('Error while sending email:', error.message);
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error('Error while sending email:', error.message);
+    } else {
+      console.error('Unexpected error while sending email:', error);
+    }
     return false;
   }
 }
 
-export async function POST(request: NextRequest): Promise<NextResponse> {
+export async function POST(request: NextRequest): Promise<NextResponse<ApiResponse>> {
   try {
     const payload: ContactPayload = await request.json();
     const { name, email, message: userMessage } = payload;
@@ -107,9 +139,17 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
     // Validate environment variables
     if (!token || !chat_id) {
-      return NextResponse.json({
+      return NextResponse.json<ApiResponse>({
         success: false,
         message: 'Telegram token or chat ID is missing.',
+      }, { status: 400 });
+    }
+
+    // Validate payload
+    if (!name || !email || !userMessage) {
+      return NextResponse.json<ApiResponse>({
+        success: false,
+        message: 'Missing required fields: name, email, or message.',
       }, { status: 400 });
     }
 
@@ -122,19 +162,24 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     const emailSuccess: boolean = await sendEmail(payload, message);
 
     if (telegramSuccess && emailSuccess) {
-      return NextResponse.json({
+      return NextResponse.json<ApiResponse>({
         success: true,
         message: 'Message and email sent successfully!',
       }, { status: 200 });
     }
 
-    return NextResponse.json({
+    return NextResponse.json<ApiResponse>({
       success: false,
       message: 'Failed to send message or email.',
     }, { status: 500 });
-  } catch (error: any) {
-    console.error('API Error:', error.message);
-    return NextResponse.json({
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error('API Error:', error.message);
+    } else {
+      console.error('Unexpected API Error:', error);
+    }
+    
+    return NextResponse.json<ApiResponse>({
       success: false,
       message: 'Server error occurred.',
     }, { status: 500 });
