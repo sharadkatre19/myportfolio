@@ -229,7 +229,7 @@ I'm ${personalData.name}, a Professional ${personalData.designation}.`;
                 width={320}
                 height={320}
                 alt="SHARAD KATRE - Full Stack Developer"
-                className={`w-full h-full object-cover transition-all duration-700 grayscale-500 hover:grayscale-0 hover:scale-190 cursor-pointer ${isImageLoaded ? 'opacity-100' : 'opacity-0'
+                className={`w-full h-full object-cover transition-all duration-700 hover:scale-190 cursor-pointer ${isImageLoaded ? 'opacity-100' : 'opacity-0'
                   }`}
                 onLoad={handleImageLoad}
                 priority
