@@ -3,11 +3,6 @@ import { skillsImage } from "@/utils/skill-image";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 
-interface SkillImageResult {
-  src: string;
-  [key: string]: any;
-}
-
 const Skills: React.FC = () => {
   return (
     <div id="skills" className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">

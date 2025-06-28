@@ -2,7 +2,7 @@
 
 import { isValidEmail } from "@/utils/check-email";
 import axios, { AxiosError } from "axios";
-import { useState, useEffect, FormEvent, ChangeEvent, FocusEvent } from "react";
+import { useState, useEffect, FormEvent, ChangeEvent } from "react";
 import { TbMailForward, TbCheck, TbX, TbUser, TbMail, TbMessage } from "react-icons/tb";
 import { HiSparkles } from "react-icons/hi";
 import { FiLoader } from "react-icons/fi";
@@ -118,7 +118,7 @@ const ContactForm: React.FC = () => {
 
     try {
       setIsLoading(true);
-      const res = await axios.post(
+      await axios.post(
         `${process.env.NEXT_PUBLIC_APP_URL}/api/contact`,
         userInput
       );
