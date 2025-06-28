@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "prepare": "husky install",
-    "lint": "next lint"
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "npm run lint -- --fix"
   },
   "dependencies": {
     "@next/third-parties": "^15.3.4",
@@ -28,8 +29,15 @@
     "@types/nodemailer": "^6.4.17",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@typescript-eslint/eslint-plugin": "^8.35.0",
+    "@typescript-eslint/parser": "^8.35.0",
     "eslint": "^9.30.0",
     "eslint-config-next": "15.3.4",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-prettier": "^5.5.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.2",
     "prettier": "^3.6.2",
@@ -38,12 +46,11 @@
     "typescript": "^5"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{json,css,md}": [
-      "prettier --write"
-    ]
+    "src/**/*.{ts,tsx}": "npm run lint:fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
