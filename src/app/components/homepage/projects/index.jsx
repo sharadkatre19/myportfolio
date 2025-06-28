@@ -60,20 +60,11 @@ const Projects = () => {
 
           {/* Projects Container */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {projectsData.slice(0, 4).map((project, index) => (
+            {projectsData.map((project, index) => (
               <ProjectCard key={index} project={project} index={index} />
             ))}
           </div>
 
-          {/* View More Projects Button */}
-          {projectsData.length > 4 && (
-            <div className="text-center mt-12">
-              <button className="bg-gradient-to-r from-[#0974f1] to-blue-500 text-black px-8 py-3 rounded-lg font-bold hover:shadow-lg hover:shadow-[#0974f1]/25 transition-all duration-300 hover:scale-105 flex items-center gap-2 mx-auto">
-                <FiExternalLink className="w-5 h-5" />
-                View All Projects ({projectsData.length})
-              </button>
-            </div>
-          )}
         </div>
       </div>
     </div>
