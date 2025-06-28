@@ -3,7 +3,7 @@
 import Lottie, { LottieOptions } from "lottie-react";
 
 interface AnimationLottieProps {
-  animationPath: any; // Lottie animation data object
+  animationPath: string; // Lottie animation data object
   width?: string | number;
 }
 

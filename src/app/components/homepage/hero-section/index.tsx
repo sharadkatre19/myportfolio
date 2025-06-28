@@ -4,8 +4,8 @@ import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
 import Link from "next/link";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
-import { FaFacebook, FaTwitterSquare, FaCode, FaUser, FaTools } from "react-icons/fa";
-import { MdDownload, MdVerified } from "react-icons/md";
+import { FaFacebook, FaTwitterSquare } from "react-icons/fa";
+import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
 
@@ -13,7 +13,6 @@ const HeroSection: React.FC = () => {
   const [typedText, setTypedText] = useState<string>("");
   const [showCursor, setShowCursor] = useState<boolean>(true);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
-  const [activeCard, setActiveCard] = useState<number>(0);
   const [isVisible, setIsVisible] = useState<boolean>(true);
   const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -73,18 +72,6 @@ I'm ${personalData.name}, a Professional ${personalData.designation}.`;
   useEffect(() => {
     setIsLoaded(true);
   }, []);
-
-  // Auto-rotate cards
-  useEffect(() => {
-    const cardTimer = setInterval(() => {
-      setActiveCard(prev => (prev + 1) % 3);
-    }, 4000);
-
-    return () => clearInterval(cardTimer);
-  }, []);
-
-  const profileCards: never[] = [
-  ];
 
   const handleImageLoad = (): void => {
     setIsImageLoaded(true);

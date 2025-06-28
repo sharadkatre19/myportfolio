@@ -1,3 +1,4 @@
+import React from "react";
 import { personalData } from "@/utils/data/personal-data";
 import AboutSection from "./components/homepage/about";
 import Blog from "./components/homepage/blog";
@@ -21,7 +22,7 @@ interface BlogArticle {
   published_at: string;
   tag_list: string[];
   reading_time_minutes: number;
-  [key: string]: any; // Allow for additional properties
+  [key: string]: unknown; // Allow for additional properties
 }
 
 async function getData(): Promise<BlogArticle[]> {
@@ -38,7 +39,7 @@ async function getData(): Promise<BlogArticle[]> {
   return filtered;
 }
 
-export default async function Home(): Promise<any> {
+export default async function Home(): Promise<React.ReactNode> {
   const blogs: BlogArticle[] = await getData();
 
   return (
