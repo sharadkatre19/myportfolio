@@ -212,15 +212,16 @@ const ContactSection: React.FC = () => {
         <div className="text-center mt-12">
           <p className="text-gray-600 dark:text-gray-300 text-lg">
             Ready to start a conversation?{' '}
-            <Link
+            <a
               href={`mailto:${personalData.email}`}
               className="text-blue-600 dark:text-blue-400 hover:underline font-semibold"
             >
               Drop me a line
-            </Link>{' '}
+            </a>{' '}
             and let&apos;s discuss your next project.
           </p>
         </div>
+
       </div>
     </div>
   );

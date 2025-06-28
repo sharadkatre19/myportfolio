@@ -130,11 +130,11 @@ To Fork the repo click on the fork button at the top right of the page. Once the
 
 ```bash
 
-git clone https://github.com/<YOUR GITHUB USERNAME>/developer-portfolio.git
+git clone https://github.com/<YOUR GITHUB USERNAME>/myportfolio.git
 
   
 
-cd developer-portfolio
+cd myportfolio
 
 ```
 
@@ -272,7 +272,7 @@ EMAIL_ADDRESS =
 
   
 
-### Then, Customize data in the `utils/data` [folder](https://github.com/said7388/developer-portfolio/tree/main/utils/data).
+### Then, Customize data in the `utils/data` [folder](https://github.com/sharadkatre19/myportfolio/tree/main/utils/data).
 
   
 
