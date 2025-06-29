@@ -7,7 +7,7 @@ import { CiLocationOn } from "react-icons/ci";
 import { FaFacebook, FaStackOverflow, FaCopy, FaCheck } from 'react-icons/fa';
 import { FaXTwitter } from "react-icons/fa6";
 import { IoLogoGithub, IoMdCall } from "react-icons/io";
-import { MdAlternateEmail } from "react-icons/md";
+import { MdAlternateEmail, MdOutlineMarkEmailRead } from "react-icons/md";
 import ContactForm from './contact-form';
 
 interface ContactMethod {
@@ -100,8 +100,18 @@ const ContactSection: React.FC = () => {
   ];
 
   return (
-    <div className="py-16 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div id="contact" className="py-16">
+      <div className="flex justify-center my-5 lg:py-8">
+        <div className="flex items-center w-full px-4">
+          <span className="flex-1 h-[2px] bg-gradient-to-l from-[#9fccfa] via-[#0974f1]/50 to-transparent"></span>
+          <span className="bg-gradient-to-r from-[#9fccfa] to-[#0974f1] w-fit text-white p-2 px-5 text-xl rounded-md flex items-center gap-2">
+            <MdOutlineMarkEmailRead className="w-5 h-5" />
+            Contact Me
+          </span>
+          <span className="flex-1 h-[2px] bg-gradient-to-r from-[#9fccfa] via-[#0974f1]/50 to-transparent"></span>
+        </div>
+      </div>
+      <div className="p-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 rounded">
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">

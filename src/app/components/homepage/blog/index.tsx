@@ -5,6 +5,7 @@ import BlogCard, { Blog as IBlog } from './blog-card';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { personalData } from '@/utils/data/personal-data';
+import { FiFileText } from 'react-icons/fi';
 
 interface BlogProps {
   blogs: IBlog[];
@@ -15,7 +16,6 @@ const Blog: React.FC<BlogProps> = ({ }) => {
 
   async function getData(): Promise<IBlog[]> {
     const blogURL = `https://dev.to/api/articles?username=${personalData.devUsername}`;
-    console.log("🚀 ~ `Blogs`:", blogURL);
     const res = await axios.get(blogURL, {
       headers: {
         'Content-Type': 'application/json',
@@ -27,10 +27,8 @@ const Blog: React.FC<BlogProps> = ({ }) => {
     }
 
     const data: IBlog[] = res.data;
-    console.log("🚀 ~ data:", data);
 
     const filtered = data.filter((item: IBlog) => item?.cover_image).sort(() => Math.random() - 0.5);
-    console.log("🚀 ~ filtered:", filtered);
 
     return filtered;
   }
@@ -42,22 +40,17 @@ const Blog: React.FC<BlogProps> = ({ }) => {
   }, []);
 
   return (
-    <div id='blogs' className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
+    <div id='blogs' className="relative z-50 border-t my-12 lg:my-24 ">
       <div className="w-[100px] h-[100px] rounded-full absolute top-6 left-[42%] translate-x-1/2 filter blur-3xl  opacity-20"></div>
 
-      <div className="flex justify-center -translate-y-[1px]">
-        <div className="w-3/4">
-          <div className="h-[1px] bg-gradient-to-r from-transparent via-[#0974f1] to-transparent  w-full" />
-        </div>
-      </div>
-
-      <div className="flex justify-center my-5 lg:py-8">
-        <div className="flex  items-center">
-          <span className="w-24 h-[2px] bg-[#0974f1]"></span>
-          <span className="bg-gradient-to-r from-[#9fccfa] to-[#0974f1] w-fit text-white p-2 px-5 text-xl rounded-md">
+      <div className="mb-20">
+        <div className="w-[100px] h-[100px] bg-gradient-to-r from-[#0974f1]/30 to-blue-500/30 rounded-full absolute -top-4 left-0 translate-x-1/2 filter blur-3xl opacity-50 animate-pulse"></div>
+        <div className="flex items-center justify-start relative backdrop-blur-sm">
+          <span className="bg-gradient-to-r from-[#9fccfa] to-[#0974f1] absolute left-0 w-fit text-white px-6 py-3 text-xl font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2">
+            <FiFileText className="w-5 h-5" />
             Blogs
           </span>
-          <span className="w-24 h-[2px] bg-[#0974f1]"></span>
+          <span className="w-full h-[2px] bg-gradient-to-r from-[#9fccfa] via-[#0974f1]/50 to-transparent ml-2"></span>
         </div>
       </div>
 

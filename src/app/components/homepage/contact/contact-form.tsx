@@ -349,7 +349,7 @@ const ContactForm: React.FC = () => {
           )}
 
           {/* Submit Button */}
-          <div className="flex flex-col items-center gap-4 pt-4">
+          <div className="flex flex-col items-center gap-4">
             <button 
               className={`group flex items-center gap-2 hover:gap-4 rounded-full bg-gradient-to-r from-[#9fccfa] to-[#0974f1] px-8 py-4 text-center text-sm font-semibold uppercase tracking-wider text-white transition-all duration-300 ease-out hover:shadow-lg hover:shadow-[#0974f1]/25 focus:ring-2 focus:ring-[#0974f1] focus:ring-offset-2 focus:ring-offset-white disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 active:scale-95 ${
                 isLoading ? 'animate-pulse' : ''
