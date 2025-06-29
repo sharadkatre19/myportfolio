@@ -54,7 +54,7 @@ function Education() {
         <BsAward className="text-lg rotate-270" />
           Education
         </span>
-        <span className="h-72 w-[2px] bg-gradient-to-b from-[#0974f1] to-transparent"></span>
+        <span className="h-140 w-[2px] bg-gradient-to-b from-[#9fccfa] via-[#0974f1]/50 to-transparent"></span>
       </div>
 
       <div className="py-8 px-4 sm:px-6 lg:px-8">
