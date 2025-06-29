@@ -35,7 +35,7 @@ function Education() {
   return (
     <section 
       id="education" 
-      className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]"
+      className="relative z-50 border-t my-12 lg:my-24 pt-16 "
       aria-labelledby="education-heading"
     >
       <Image
@@ -46,26 +46,15 @@ function Education() {
         className="absolute top-0 -z-10"
         role="presentation"
       />
-      
-      {/* Decorative border */}
-      <div className="flex justify-center -translate-y-[1px]">
-        <div className="w-3/4">
-          <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#25213b] to-transparent" />
-        </div>
-      </div>
-
       {/* Section Header */}
-      <div className="flex justify-center my-8 lg:py-12">
-        <div className="flex items-center group">
-          <span className="w-16 sm:w-24 h-[2px] bg-gradient-to-r from-transparent to-[#0974f1] transition-all duration-500 group-hover:w-32"></span>
-          <div className="bg-gradient-to-r from-[#9fccfa] to-[#0974f1] w-fit text-white p-2 px-6 text-xl sm:text-2xl font-semibold rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
-            <h2 id="education-heading" className="flex items-center gap-2">
-              <BsAward className="text-lg" />
-              Education
-            </h2>
-          </div>
-          <span className="w-16 sm:w-24 h-[2px] bg-gradient-to-l from-transparent to-[#0974f1] transition-all duration-500 group-hover:w-32"></span>
-        </div>
+      <div className={`hidden lg:flex flex-col items-center absolute top-24 -left-8 transition-all duration-700 ${
+        'opacity-100 translate-x-0'
+      }`}>
+        <span className="flex items-center gap-2 bg-gradient-to-r from-[#9fccfa] to-[#0974f1]  w-fit text-white rotate-90 p-2 px-5 text-xl rounded-md hover:bg-[#005f8a] transition-colors duration-300 shadow-lg hover:shadow-xl">
+        <BsAward className="text-lg rotate-270" />
+          Education
+        </span>
+        <span className="h-72 w-[2px] bg-gradient-to-b from-[#0974f1] to-transparent"></span>
       </div>
 
       <div className="py-8 px-4 sm:px-6 lg:px-8">

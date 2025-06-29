@@ -2,25 +2,19 @@ import { skillsData } from "@/utils/data/skills";
 import { skillsImage } from "@/utils/skill-image";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
+import { FaCode } from "react-icons/fa";
 
 const Skills: React.FC = () => {
   return (
-    <div id="skills" className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
-      <div className="w-[100px] h-[100px] rounded-full absolute top-6 left-[42%] translate-x-1/2 filter blur-3xl  opacity-20"></div>
-
-      <div className="flex justify-center -translate-y-[1px]">
-        <div className="w-3/4">
-          <div className="h-[1px] bg-gradient-to-r from-transparent via-[#0974f1] to-transparent  w-full" />
-        </div>
-      </div>
-
+    <div id="skills" className="relative z-50 border-t my-12 lg:my-24">
       <div className="flex justify-center my-5 lg:py-8">
-        <div className="flex  items-center">
-          <span className="w-24 h-[2px] bg-[#0974f1]"></span>
-          <span className="bg-gradient-to-r from-[#9fccfa] to-[#0974f1] w-fit text-white p-2 px-5 text-xl rounded-md">
+        <div className="flex items-center w-full px-4">
+          <span className="flex-1 h-[2px] bg-gradient-to-l from-[#9fccfa] via-[#0974f1]/50 to-transparent"></span>
+          <span className="bg-gradient-to-r from-[#9fccfa] to-[#0974f1] w-fit text-white p-2 px-5 text-xl rounded-md flex items-center gap-2">
+            <FaCode className="w-5 h-5" />
             Skills
           </span>
-          <span className="w-24 h-[2px] bg-[#0974f1]"></span>
+          <span className="flex-1 h-[2px] bg-gradient-to-r from-[#9fccfa] via-[#0974f1]/50 to-transparent"></span>
         </div>
       </div>
 

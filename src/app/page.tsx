@@ -22,7 +22,9 @@ export default async function Home(): Promise<React.ReactNode> {
       <Projects />
       <Education />
       <Blog blogs={[]} />
-      <ContactSection />
+      <div id="contact">
+        <ContactSection />
+      </div>
       <Footer />
       <ScrollToTop />
     </div>

@@ -42,10 +42,10 @@ function AboutSection() {
       <div className={`hidden lg:flex flex-col items-center absolute top-16 -right-8 transition-all duration-700 ${
         isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
       }`}>
-        <span className="bg-[#0974f1] w-fit text-white rotate-90 p-2 px-5 text-xl rounded-md hover:bg-[#005f8a] transition-colors duration-300 shadow-lg hover:shadow-xl">
+        <span className="bg-gradient-to-r from-[#9fccfa] to-[#0974f1]  w-fit text-white rotate-90 p-2 px-5 text-xl rounded-md hover:bg-[#005f8a] transition-colors duration-300 shadow-lg hover:shadow-xl">
           ABOUT ME
         </span>
-        <span className="h-36 w-[2px] bg-gradient-to-b from-[#0974f1] to-transparent"></span>
+        <span className="h-72 w-[2px] bg-gradient-to-b from-[#0974f1] to-transparent"></span>
       </div>
 
       <div className="items-center mr-lg px-8 lg:px-16">

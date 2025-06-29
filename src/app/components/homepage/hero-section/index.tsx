@@ -182,7 +182,7 @@ I'm ${personalData.name}, a Professional ${personalData.designation}.`;
           {/* CTA Buttons with improved accessibility and animations */}
           <div className="flex items-center gap-3 flex-wrap">
             <Link
-              href="#contact"
+              href="/#contact"
               className="bg-gradient-to-r from-[#9fccfa] to-[#0974f1] p-[1px] rounded-full transition-all duration-300 hover:from-[#9fccfa] hover:to-[#0974f1] hover:shadow-lg hover:shadow-[#9fccfa]/25 focus:ring-2 focus:ring-[#9fccfa] focus:ring-offset-2 focus:ring-offset-[#FFFFFF]"
               aria-label="Contact me"
             >
