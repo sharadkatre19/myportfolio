@@ -48,7 +48,7 @@ function AboutSection() {
         <span className="h-72 w-[2px] bg-gradient-to-b from-[#0974f1] to-transparent"></span>
       </div>
 
-      <div className="items-center mr-lg px-8 lg:px-16">
+      <div className="items-center mr-lg">
         
         {/* Text Content */}
         <div className={`order-2 lg:order-1 transition-all duration-700 delay-200 ${
