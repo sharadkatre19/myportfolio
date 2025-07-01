@@ -2,17 +2,40 @@ export const projectsData = [
   {
     id: 1,
     name: 'Worxmate OKR Software',
-    description: "Built an end-to-end OKR (Objectives and Key Results) tracking system with features like task boards, progress visualization, and alignment tools. Implemented AI-powered OKR suggestions and user behavior analytics using generative models. Delivered responsive UI with reusable React components using Next.js.",
-    tools: ['Angular', 'React', 'Next.js', 'Tailwind CSS', 'Node.js', 'Azure DevOps', 'AI LLM', 'Firestore', 'BigQuery', 'GCP', 'React Native', 'iOS', 'Android'],
+    description:
+      "Led the development of a comprehensive OKR (Objectives and Key Results) platform with task boards, alignment tools, and progress visualization. Integrated AI-powered OKR suggestions using Azure OpenAI and enhanced insights via BigQuery and PowerBI. Delivered scalable architecture using Angular, Node.js, and Firebase.",
+    tools: [
+      'Angular',
+      'Node.js',
+      'Firebase',
+      'GCP',
+      'Azure OpenAI',
+      'BigQuery',
+      'Elastic Search',
+      'React Native',
+      'PowerBI',
+      'Intercom',
+    ],
     role: 'Full Stack Developer & Tech Lead',
     code: '',
     demo: 'https://worxmate.ai/',
   },
   {
     id: 2,
-    name: 'Performance Management System (PMS)',
-    description: "Designed and implemented a full-cycle performance review platform with AI LLM support. Managed review workflows, scoring systems, and reporting dashboards. Enabled cycle automation and integrated contextual performance feedback suggestions.",
-    tools: ['Angular', 'React', 'Next.js', 'Tailwind CSS', 'Node.js', 'Azure DevOps', 'AI LLM', 'Firestore', 'BigQuery', 'GCP'],
+    name: 'Worxmate Performance Management System (PMS)',
+    description:
+      "Designed and developed an AI-integrated performance management system for full-cycle employee reviews, scoring workflows, contextual feedback, and dashboards. Automated performance cycles and enabled real-time insights using Azure, GCP, and Elastic Search.",
+    tools: [
+      'Angular',
+      'Node.js',
+      'Firebase',
+      'GCP',
+      'Azure OpenAI',
+      'BigQuery',
+      'Elastic Search',
+      'React Native',
+      'Intercom',
+    ],
     role: 'Full Stack Developer & Tech Lead',
     code: '',
     demo: 'https://worxmate.ai/',
@@ -20,7 +43,8 @@ export const projectsData = [
   {
     id: 3,
     name: 'DTracker IoT Mobile App',
-    description: "Developed DTracker, a cross-platform mobile app using React Native with integrated IoT BLE device support. Implemented location services and built adaptive UI components for different screen sizes.",
+    description:
+      "Developed DTracker, a cross-platform React Native mobile app with IoT BLE device integration and real-time location tracking. Optimized UI for responsiveness across Android and iOS. Ensured robust BLE communication using native C++ modules.",
     tools: ['React Native', 'Bluetooth Low Energy (BLE)', 'JavaScript', 'C++', 'Android', 'iOS'],
     role: 'Sr. React Native Developer',
     code: '',
@@ -29,8 +53,9 @@ export const projectsData = [
   {
     id: 4,
     name: 'Truck Pulse – Transporter & Shipper App',
-    description: "Built the Truck Pulse mobile app with separate interfaces for transporters and shippers. Managed real-time logistics tracking and vehicle management system.",
-    tools: ['Objective-C', 'Swift', 'Java', 'Android', 'iOS'],
+    description:
+      "Built a logistics app with dedicated modules for shippers and transporters. Enabled real-time vehicle tracking, trip scheduling, and fleet management across Android and iOS platforms using native technologies.",
+    tools: ['Objective-C', 'Swift', 'Java', 'Android', 'iOS', 'React Native'],
     role: 'Software Engineer',
     code: '',
     demo: '',
@@ -38,25 +63,11 @@ export const projectsData = [
   {
     id: 5,
     name: 'Fastudo – On-Demand Home Services App',
-    description: "Created Fastudo, a home services app that allows users to book services with detailed request forms and integrated payment options. Designed for user-friendliness and ease of navigation.",
+    description:
+      "Created a user-friendly home services app for booking skilled professionals with service customization, secure payments, and real-time status updates. Focused on intuitive UX and smooth navigation across platforms.",
     tools: ['Objective-C', 'Swift', 'Java', 'Android', 'iOS'],
     role: 'Software Engineer',
     code: '',
     demo: '',
-  }
+  },
 ];
-
-
-
-// Do not remove any property.
-// Leave it blank instead as shown below
-
-// {
-//     id: 1,
-//     name: '',
-//     description: "",
-//     tools: [],
-//     role: '',
-//     code: '',
-//     demo: '',
-// },

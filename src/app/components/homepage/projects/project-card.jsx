@@ -3,6 +3,7 @@
 import * as React from 'react';
 import GlowCard from '../../helper/glow-card';
 import Image from "next/image";
+import Link from 'next/link';
 
 function ProjectCard({ project }) {
   const [isHovered, setIsHovered] = React.useState(false);
@@ -106,19 +107,15 @@ function ProjectCard({ project }) {
           {/* Action Section */}
           <div className="flex items-center justify-between pt-4 border-t border-white/10">
             <div className="flex items-center space-x-4">
-              <button className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 font-medium text-sm transition-all duration-200 hover:scale-105">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-                <span>View Project</span>
-              </button>
 
-              <button className="flex items-center space-x-2 text-gray-400 hover:text-black font-medium text-sm transition-all duration-200 hover:scale-105">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                </svg>
-                <span>Live Demo</span>
-              </button>
+              {project.demo && (
+                <Link href={project.demo} className="flex items-center space-x-2 text-gray-400 hover:text-black font-medium text-sm transition-all duration-200 hover:scale-105">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                  </svg>
+                  <span>Live Demo</span>
+                </Link>
+              )}
             </div>
 
             {/* Hover indicator */}
