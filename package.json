@@ -14,7 +14,7 @@
     "@next/third-parties": "^15.3.4",
     "axios": "^1.10.0",
     "lottie-react": "^2.4.1",
-    "next": "15.3.4",
+    "next": "15.3.8",
     "nodemailer": "^7.0.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
